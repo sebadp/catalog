@@ -1,0 +1,41 @@
+version: "3.9"
+
+networks:
+  djangonetwork:
+    driver: bridge
+
+volumes:
+  pgdata:
+
+services:
+  db:
+    image: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    networks:
+      - djangonetwork
+
+
+  app:
+    command: "run python manage.py runserver 0.0.0.0:8000"
+    stdin_open: true
+    tty: true
+    build: .
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    env_file:
+      - .env
+    links:
+      - db:db
+    networks:
+      - djangonetwork
