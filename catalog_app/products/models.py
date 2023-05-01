@@ -40,7 +40,7 @@ class Product(models.Model):
 
 class Query(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='queries')
-    count = models.IntegerField()
+    count = models.IntegerField(blank=True, default=0)
 
     def __str__(self):
         return f"{self.product.name}: {self.count} queries"

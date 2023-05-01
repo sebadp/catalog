@@ -4,7 +4,6 @@ from .permissions import AdminProductPermission
 from .serializers import ProductSerializer, BrandSerializer, CustomUserSerializer
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.response import Response
-from django.utils.timezone import now
 
 
 class ListPagination(PageNumberPagination):
@@ -23,7 +22,7 @@ class ProductListCreateAPIView(generics.ListCreateAPIView):
 class ProductRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, AdminProductPermission]
+    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
@@ -35,8 +34,7 @@ class ProductRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView)
             query, created = Query.objects.get_or_create(product=instance)
 
             # Increment the number of queries for this product
-            query.num_queries += 1
-            query.last_query = now()
+            query.count += 1
             query.save()
 
         serializer = self.get_serializer(instance)
