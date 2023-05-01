@@ -129,5 +129,5 @@ You should be able to open the site in your browser now
 ## Useful links
 
 - [Product Definitions](/docs/DEFINITIONS.md)
-- [How I will Scale](/docs/SCALE_UP.md)
+- [Escalation Proposal](/docs/SCALE_UP.md)
 - [API Documentation](http://localhost:8000/SWAGGER)
