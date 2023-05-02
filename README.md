@@ -130,4 +130,4 @@ You should be able to open the site in your browser now
 
 - [Product Definitions](/docs/DEFINITIONS.md)
 - [Escalation Proposal](/docs/SCALE_UP.md)
-- [API Documentation](http://localhost:8000/SWAGGER)
+- [API Documentation](http://localhost:8000/api/v1/docs)
