@@ -3,7 +3,7 @@ from .base import *
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['testserver', 'localhost', '0.0.0.0']
+ALLOWED_HOSTS = []
 
 
 
@@ -15,12 +15,8 @@ ALLOWED_HOSTS = ['testserver', 'localhost', '0.0.0.0']
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': 'postgres',
-        'HOST': 'localhost',
-        'PORT': 5432,
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
         'TEST': {
             'NAME': 'testing_db',
         },
