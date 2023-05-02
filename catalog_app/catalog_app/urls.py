@@ -15,15 +15,34 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.urls import include
+from rest_framework import permissions
 
 from django.contrib import admin
 from django.urls import path
+from drf_yasg.views import get_schema_view
+from drf_yasg import openapi
 
 from products.views import ProductListCreateAPIView, ProductRetrieveUpdateDestroyAPIView, BrandListCreateAPIView, \
     BrandRetrieveUpdateDestroyAPIView, CustomUserRetrieveUpdateDestroyAPIView, CustomUserListCreateAPIView
 
+schema_view = get_schema_view(
+    openapi.Info(
+        #  add your swagger doc title
+        title="Catalog API",
+        #  version of the swagger doc
+        default_version='v1',
+        # first line that appears on the top of the doc
+        description="Catalog API Documentation",
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny],
+
+)
+
+
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/docs/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
     path('api/auth/', include('rest_framework.urls')),
     path('api/users/', CustomUserListCreateAPIView.as_view(), name='user-list'),
     path('api/users/<int:pk>/', CustomUserRetrieveUpdateDestroyAPIView.as_view(), name='user-detail'),
