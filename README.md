@@ -26,7 +26,7 @@ This repository contains all the code needed for running the Product catalog API
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Micro Service created with FastAPI and Python.
+Micro Service created with Django and Python.
 This project includes a Docker Compose file ready to build and run.
 
 ### Built With
@@ -130,4 +130,4 @@ You should be able to open the site in your browser now
 
 - [Product Definitions](/docs/DEFINITIONS.md)
 - [Escalation Proposal](/docs/SCALE_UP.md)
-- [API Documentation](http://localhost:8000/api/v1/docs)
+- [API Documentation - > Deployed at AWS EC2 instance](https://13.58.210.116:8000/api/v1/docs)
