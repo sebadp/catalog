@@ -3,13 +3,22 @@ from django.db import models
 
 
 class Brand(models.Model):
+    """
+    Model representing a brand of products.
+    """
     name = models.CharField(max_length=255)
 
     def __str__(self):
+        """
+        Return the name of the brand.
+        """
         return self.name
 
 
 class Product(models.Model):
+    """
+    Model representing a product.
+    """
     sku = models.PositiveIntegerField(default=0)
     name = models.CharField(max_length=100)
     price = models.DecimalField(max_digits=10, decimal_places=2)
@@ -19,6 +28,9 @@ class Product(models.Model):
     brand = models.ManyToManyField(Brand, related_name='products', blank=True)
 
     def __str__(self):
+        """
+        Return the name of the product.
+        """
         return self.name
 
     def add_inventory(self, quantity):
@@ -39,14 +51,23 @@ class Product(models.Model):
 
 
 class Query(models.Model):
+    """
+    Model representing a query for a product.
+    """
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='queries')
     count = models.IntegerField(blank=True, default=0)
 
     def __str__(self):
+        """
+        Return the name of the product and the number of queries.
+        """
         return f"{self.product.name}: {self.count} queries"
 
 
 class CustomUser(AbstractUser):
+    """
+    Model representing a user of the system.
+    """
     groups = models.ManyToManyField(
         Group,
         verbose_name='groups',

@@ -134,6 +134,8 @@ class Query(models.Model):
 ## `/auth/logout/`
 - `POST`: Log out the currently authenticated user.
 
+## `/api/docs/`
+- `GET`: Swagger auto generated API documentation.
 
 # Authentication and Authorization
 
