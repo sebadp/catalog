@@ -26,7 +26,7 @@ This repository contains all the code needed for running the Product catalog API
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-Micro Service created with Django and Python.
+API created with Django and Python.
 This project includes a Docker Compose file ready to build and run.
 
 ### Built With
